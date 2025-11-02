@@ -40,8 +40,13 @@ from stores;
 
 -- Q7) From orders, show order_id, status, and a computed column total_items
 --     that counts how many items are in each order.
-
--- NEEDS JOIN, WILL COME BACK TO LATER 
+SELECT 
+    o.order_id,
+    o.status,
+    COUNT(oi.order_item_id) AS total_items
+FROM orders o
+JOIN order_items oi ON o.order_id = oi.order_id
+GROUP BY o.order_id, o.status;
 
 -- Q8) Show orders placed on '2025-09-04' (any time that day).
 
